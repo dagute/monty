@@ -3,6 +3,8 @@
  * _push - pushes an element to the stack
  * @stack: pointer
  * @line_number: line number
+ * @token: value converted to int
+ * Return: void
  */
 void _push(stack_t **stack, unsigned int line_number, char *token)
 {
