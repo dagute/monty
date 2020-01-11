@@ -28,8 +28,10 @@ int main(int argc, char **argv)
 	stack = NULL;
 	l = symbol = NULL;
 	len = 0;
-	for (line_num = 0; getline(&l, &len, ar) != -1 && val == 0; ++line_num)
+	line_num = 0;
+	while (getline(&l, &len, ar) != -1 && val == 0)
 	{
+		line_num++;
 		symbol = strtok(l, "\n\t\r ");
 		if (!symbol || strncmp(symbol, "#", 1) == 0)
 			continue;
