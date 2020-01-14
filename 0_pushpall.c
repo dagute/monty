@@ -20,7 +20,7 @@ void _push(stack_t **stack, unsigned int line_number, char *token)
 
 	for (x = 0; token[x] != '\0'; x++)
 	{
-		if (token[x] == '-') /* account for negative */
+		if (token[x] == '-')
 			x++;
 		if (isdigit(token[x]) == 0)
 		{
@@ -31,7 +31,7 @@ void _push(stack_t **stack, unsigned int line_number, char *token)
 	}
 
 	newone = malloc(sizeof(stack_t));
-	if (!newone)
+	if (newone == NULL)
 	{
 		printf("Error: malloc failed\n");
 		val = 1;
@@ -54,15 +54,14 @@ void _push(stack_t **stack, unsigned int line_number, char *token)
  * @stack: pointer to stack
  * @line_number: line number
  */
-void _pall(stack_t **stack, unsigned int line_number)
+void _pall(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
-	stack_t *racer = *stack;
 
-	UNUSED(line_number);
+	stack_t *temp = *stack;
 
-	while (racer)
-	{
-		printf("%d\n", racer->n);
-		racer = racer->next;
-	}
+	if (stack == NULL || *stack == NULL)
+		return;
+
+	for (; temp != NULL; temp = temp->next)
+		printf("%d\n", temp->n);
 }
