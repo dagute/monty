@@ -3,17 +3,14 @@
  * free_list - frees the linked list
  * @stack: the stack to free
  */
-void free_list(stack_t **stack)
+void free_list(stack_t **head)
 {
 	stack_t *tmp;
 
-	if (*stack == NULL)
-		return;
-
-	while (*stack != NULL)
+	while (*head != NULL)
 	{
-		tmp = *stack;
-		*stack = (*stack)->next;
+		tmp = *head;
+		*head = (*head)->next;
 		free(tmp);
 	}
 }
